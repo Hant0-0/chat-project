@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+   <textarea id="chat-log" cols="30" rows="10"></textarea>
+</div>
+<div>
+    <input type="text" id="chat-message-input">
+    <button type="submit" id="chat-message-submit">Send</button>
+</div>
+
+
+<script>
+
+    let socket = new WebSocket('ws://localhost:8000/ws/room/')
+
+    socket.onmessage = function (e) {
+        let data = JSON.parse(e.data)
+        console.log(data)
+        document.querySelector('#chat-log').value += (data.message + '\n');
+
+    }
+
+    document.querySelector('#chat-message-submit').onclick = function (e) {
+        const messageInputDom = document.querySelector('#chat-message-input')
+        const message = messageInputDom.value
+        socket.send(JSON.stringify({'message': message}))
+        messageInputDom.value = '';
+    };
+
+</script>
+
+</body>
+</html>
