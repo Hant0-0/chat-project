@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'chat_app/style.css' %}">
+</head>
+<body>
+
+<div class="signup">
+    <form method="POST">
+        {% csrf_token %}
+
+        <h1 class="title">Sign up</h1>
+        <hr>
+        {% for forms in form %}
+            <div class="forms">
+                <div class="label">
+                    {{ forms.label }}
+                </div>
+                <div class="input">
+                    {{ forms }}
+                </div>
+                <div class="help_text">
+                    {{ forms.help_text }}
+                </div>
+            </div>
+        {% endfor %}
+
+
+        <button type="submit" class="btn">Sign up</button>
+    </form>
+</div>
+
+
+
+
+</body>
+</html>

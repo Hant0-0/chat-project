@@ -1,7 +1,12 @@
 from django.contrib import admin
 from django.urls import path, include
+from chat_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('chat/', include('chat_app.urls'))
+    path('', views.home, name='home'),
+    path('chat/', include('chat_app.urls')),
+
+    #Auth
+    path('signup/', views.signupuser, name='signupuser')
 ]

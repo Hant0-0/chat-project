@@ -1,0 +1,61 @@
+.str{
+    font-size: 100px;
+    text-align: center;
+}
+
+body {
+    background-color: #1dd01d;
+}
+
+.signup{
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #eae3e3;
+
+    width: 600px;
+    height: 600px;
+}
+
+hr{
+    width: 95%;
+    margin-bottom: 10px;
+
+
+}
+
+.forms{
+    padding-top: 20px;
+    padding-left: 5px;
+}
+
+.label{
+    font-size: 30px;
+}
+
+input{
+    width: 95%;
+    height: 25px;
+    font-size: 20px;
+}
+
+.btn{
+    margin-top: 22px;
+    margin-left: 12px;
+    width: 93px;
+    height: 41px;
+    font-size: 20px;
+    border-radius: 8px;
+    border: none;
+    background-color: #07d007;
+}
+
+.help_text{
+    color: #929592;
+}
+
+.title{
+    font-size: 50px;
+    padding-left: 10px;
+}
+
