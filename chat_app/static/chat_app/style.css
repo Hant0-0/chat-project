@@ -1,6 +1,7 @@
 .str{
     font-size: 100px;
     text-align: center;
+    margin-bottom: 15px;
 }
 
 body {
@@ -15,6 +16,15 @@ body {
 
     width: 600px;
     height: 600px;
+}
+
+.signin{
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #eae3e3;
+    width: 500px;
+    height: 350px;
 }
 
 hr{
@@ -48,6 +58,30 @@ input{
     border-radius: 8px;
     border: none;
     background-color: #07d007;
+}
+
+.btn_signup{
+    margin-bottom: 40px;
+    margin-left: 580px;
+    width: 90px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 8px;
+    border: none;
+}
+
+.btn_signin{
+    margin-left: 50px;
+    width: 90px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 8px;
+    border: none;
+}
+
+
+a{
+    text-decoration: none;
 }
 
 .help_text{

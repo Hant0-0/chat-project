@@ -8,5 +8,6 @@ urlpatterns = [
     path('chat/', include('chat_app.urls')),
 
     #Auth
-    path('signup/', views.signupuser, name='signupuser')
+    path('signup/', views.signupuser, name='signupuser'),
+    path('signin/', views.signinuser, name='signinuser'),
 ]
