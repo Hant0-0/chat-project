@@ -14,10 +14,18 @@
     <button type="submit" id="chat-message-submit">Send</button>
 </div>
 
-
+{{ room_name|json_script:'room-name' }}
 <script>
 
-    let socket = new WebSocket('ws://localhost:8000/ws/room/')
+
+    const roomName = JSON.parse(document.getElementById('room-name').textContent)
+    const socket = new WebSocket(
+        'ws://'
+        + window.location.host
+        + '/ws/chat/'
+        + roomName
+        + '/'
+    )
 
     socket.onmessage = function (e) {
         let data = JSON.parse(e.data)
