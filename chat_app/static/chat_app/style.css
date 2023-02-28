@@ -98,24 +98,49 @@ a{
     text-align: center;
 }
 
+#name_room{
+    font-size: 90px;
+    text-align: center;
+    margin-top: 40px;
+    text-transform: uppercase;
+
+}
+
 .rooms{
     border-radius: 8px;
     background-color: white;
     text-align: center;
-    width: 180px;
+    width: 300px;
     height: 160px;
+    padding-bottom: 28px;
+    margin-top: 20px;
+    margin-left: 30px;
+
 }
 
-.main{
-    width: 40%;
+.main {
+
     display: flex;
     justify-content: space-around;
-    gap: 50px;
-    margin-top: 100px;
+    margin-top: 60px;
+    margin-right: 120px;
+    flex-flow: row wrap;
+}
+
+
+#btn_logout{
+    font-weight: bold;
+    width: 60px;
+    height: 30px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: none;
+    color: #118911;
 }
 
 .enter{
-    background-color: #1dd01d;
+    background-color: #0fcc0f;
+    color: white;
     border-radius: 8px;
     font-size: 20px;
     padding: 3px 6px 3px 6px;
@@ -131,7 +156,7 @@ input#chat-message-input {
 
 .chat{
     text-align: center;
-    margin-top: 50px;
+    margin-top: -25px;
 
 }
 
@@ -200,3 +225,25 @@ input#chat-message-input{
     height: 33px;
     width: 70px;
 }
+
+
+/* NAVBAR  */
+
+.topnav {
+
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 22px;
+}
+
+/* Change the color of links on hover */
+
+

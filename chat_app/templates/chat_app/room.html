@@ -4,23 +4,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Room</title>
     <link rel="stylesheet" href="{% static 'chat_app/style.css' %}">
 </head>
 <body>
 
-<h1 class="str">{{room_name}}</h1>
+
+<div class="topnav">
+    <a>
+        <form action="{% url 'logoutuser' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" id="btn_logout">Logout</button>
+        </form>
+    </a>
+    <a>{{ request.user.username }}</a>
+    <a href="{% url 'rooms' %}">Rooms</a>
+</div>
+
+
+<h1 id="name_room">{{room_name}}</h1>
 
 <div class="chat">
     <div class="message_box" id="chat-log">
-        <div class="message">
-            <p class="nick">{{ user }}</p>
-            <p class="message_send">Random text lorem ipsum</p>
-        </div>
-        <div class="message">
-            <p class="nick">{{ user }}</p>
-            <p class="message_send">Random text lorem ipsum</p>
-        </div>
+
     </div>
     <div>
         <input type="text" id="chat-message-input">
@@ -34,11 +40,6 @@
 
 
 
-
-<form action="{% url 'logoutuser' %}" method="POST">
-    {% csrf_token %}
-    <button type="submit">Logout</button>
-</form>
 
 <script src="{% static 'chat_app/script.js' %}"></script>
 

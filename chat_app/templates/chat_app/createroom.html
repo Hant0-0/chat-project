@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Room</title>
+    <link rel="stylesheet" href="{% static 'chat_app/style.css' %}">
+</head>
+<body>
+
+
+<div class="signin">
+    <h1 class="title">Create new room</h1>
+    <hr>
+    <form method="POST">
+    {% csrf_token %}
+        <div class="forms">
+            <div class="label">
+                {{ creater }}
+            </div>
+        </div>
+    <button type="submit" class="btn">Create</button>
+    </form>
+</div>
+
+
+
+</body>
+</html>
