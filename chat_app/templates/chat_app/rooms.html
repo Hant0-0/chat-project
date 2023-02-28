@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rooms</title>
+    <link rel="stylesheet" href="{% static 'chat_app/style.css' %}">
+
+</head>
+<body>
+
+<h1 class="title_rooms">Rooms</h1>
+
+<div class="main">
+    {% for x in rooms %}
+    <div class="rooms">
+        <h1 class="title_slug">{{ x.title }}</h1>
+        <a href="{% url 'room' x.slug %}" class="enter">Enter</a>
+    </div>
+    {% endfor %}
+</div>
+
+
+</body>
+</html>

@@ -1,16 +1,17 @@
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+
+from chat_app.models import Rooms
 
 
 def home(request):
     return render(request, 'chat_app/home.html')
 
-def chat(request):
-    return render(request, 'chat_app/chat.html')
 
-
+@login_required
 def room(request, room_name):
     return render(request, 'chat_app/room.html', {'room_name': room_name})
 
@@ -22,7 +23,7 @@ def signupuser(requset):
             user = User.objects.create_user(username=requset.POST['username'], password=requset.POST['password1'])
             user.save()
             login(requset, user)
-            return redirect('home')
+            return redirect('rooms')
 
 def signinuser(request):
     if request.method == 'GET':
@@ -31,12 +32,18 @@ def signinuser(request):
         user = authenticate(username=request.POST['username'], password=request.POST['password'])
         user.save()
         login(request, user)
-        return redirect('home')
+        return redirect('rooms')
 
 def logoutuser(request):
     if request.method == 'POST':
         logout(request)
-        redirect('home')
+    return redirect('home')
+
+@login_required
+def rooms(request):
+    if request.method == "GET":
+        rooms = Rooms.objects.all()
+        return render(request, 'chat_app/rooms.html', {'rooms': rooms})
 
 
 

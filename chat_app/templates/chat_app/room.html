@@ -1,47 +1,46 @@
 <!DOCTYPE html>
+{% load static %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static 'chat_app/style.css' %}">
 </head>
 <body>
 
-<div>
-   <textarea id="chat-log" cols="30" rows="10"></textarea>
+<h1 class="str">{{room_name}}</h1>
+
+<div class="chat">
+    <div class="message_box" id="chat-log">
+        <div class="message">
+            <p class="nick">{{ user }}</p>
+            <p class="message_send">Random text lorem ipsum</p>
+        </div>
+        <div class="message">
+            <p class="nick">{{ user }}</p>
+            <p class="message_send">Random text lorem ipsum</p>
+        </div>
+    </div>
+    <div>
+        <input type="text" id="chat-message-input">
+        <button type="submit" id="chat-message-submit">Submit</button>
+    </div>
 </div>
-<div>
-    <input type="text" id="chat-message-input">
-    <button type="submit" id="chat-message-submit">Send</button>
-</div>
+
 
 {{ room_name|json_script:'room-name' }}
-<script>
+{{ request.user.username|json_script:'username' }}
 
 
-    const roomName = JSON.parse(document.getElementById('room-name').textContent)
-    const socket = new WebSocket(
-        'ws://'
-        + window.location.host
-        + '/ws/chat/'
-        + roomName
-        + '/'
-    )
 
-    socket.onmessage = function (e) {
-        let data = JSON.parse(e.data)
-        console.log(data)
-        document.querySelector('#chat-log').value += (data.message + '\n');
 
-    }
+<form action="{% url 'logoutuser' %}" method="POST">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
 
-    document.querySelector('#chat-message-submit').onclick = function (e) {
-        const messageInputDom = document.querySelector('#chat-message-input')
-        const message = messageInputDom.value
-        socket.send(JSON.stringify({'message': message}))
-        messageInputDom.value = '';
-    };
-
-</script>
+<script src="{% static 'chat_app/script.js' %}"></script>
 
 </body>
 </html>
